@@ -7,37 +7,89 @@
     <meta charset="utf-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link href="./css.css" rel="stylesheet" />
+    <link href="./style/css.css" rel="stylesheet" />
 </head>
 
 <body>
     <!-- -->
-    <div class="container">
-        <nav class="navbar navbar-dark bg-dark">
-            <div class="container-fluid">
-                <a class="navbar-brand"></a>
-                <!--
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-                -->
-            </div>
-        </nav>
-        <hr>
-    </div>
-    <!--    -->
-    <div class="container">
-        <div class="text-center">
-            <h1 id="titulo-capitulo"></h1>
-            <!-- .titulo-capitulo-->
-            <h4 id="desc-capitulo"></h4>
-            <!-- .desc-capitulo -->
-            <hr>
-        </div>
-        <!-- -->
-        <div>
+    <div class="row">
+        <div class=" col-3 flex-shrink-0 p-3 bg-dark">
+            <a href="/Spring/docs/index.html"
+                class="d-flex align-items-center pb-3 mb-3 link-light text-decoration-none border-bottom">
+                <svg class="" width="30" height="24" style="background-color: white;">
 
+                </svg>
+                <span class="fs-5 fw-semibold">Spring</span>
+            </a>
+            <ul class="list-unstyled ps-0">
+                <li class="mb-1">
+                    <button class="btn btn-toggle link-light align-items-center rounded collapsed"
+                        data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+                        Java
+                    </button>
+                    <div class="collapse" id="home-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="#" class="link-light rounded">Overview</a></li>
+                            <li><a href="#" class="link-light rounded">Updates</a></li>
+                            <li><a href="#" class="link-light rounded">Reports</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="mb-1">
+                    <button class="btn btn-toggle link-light align-items-center rounded collapsed"
+                        data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+                        Spring
+                    </button>
+                    <div class="collapse" id="dashboard-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="#" class="link-light rounded">Overview</a></li>
+                            <li><a href="#" class="link-light rounded">Weekly</a></li>
+                            <li><a href="#" class="link-light rounded">Monthly</a></li>
+                            <li><a href="#" class="link-light rounded">Annually</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="mb-1">
+                    <button class="btn btn-toggle link-light align-items-center rounded collapsed"
+                        data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+                        Thymeleaf
+                    </button>
+                    <div class="collapse" id="orders-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="#" class="link-light rounded">New</a></li>
+                            <li><a href="#" class="link-light rounded">Processed</a></li>
+                            <li><a href="#" class="link-light rounded">Shipped</a></li>
+                            <li><a href="#" class="link-light rounded">Returned</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="border-top my-3"></li>
+                <li class="mb-1">
+                    <button class="btn btn-toggle link-light align-items-center rounded collapsed"
+                        data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+                        Account
+                    </button>
+                    <div class="collapse" id="account-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="#" class="link-light rounded">New...</a></li>
+                            <li><a href="#" class="link-light rounded">Profile</a></li>
+                            <li><a href="#" class="link-light rounded">Settings</a></li>
+                            <li><a href="#" class="link-light rounded">Sign out</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!--    -->
+        <div class="col">
+            <div class="text-center">
+                <h1 id="titulo-capitulo">asd</h1>
+                <!-- .titulo-capitulo-->
+                <h4 id="desc-capitulo">qwe</h4>
+                <!-- .desc-capitulo -->
+                <hr>
+            </div>
+            <!-- -->
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
