@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--<meta http-equiv="refresh" content="2">-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href="../style/css.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- -->
+    <div class="row">
+        <!--  SideBar  -->
+        <div class=" col-3 flex-shrink-0 p-3 bg-dark">
+            <a href="/Spring/docs/index.html"
+                class="d-flex align-items-center pb-3 mb-3 link-light text-decoration-none border-bottom">
+                <svg class="" width="30" height="24" style="background-color: white;">
+                </svg>
+                <span class="fs-5 fw-semibold">Spring</span>
+            </a>
+            <ul class="list-unstyled ps-0">
+                <!-- Java -->
+                <li class="mb-1">
+                    <button class="btn btn-toggle link-light align-items-center rounded collapsed"
+                        data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+                        Java
+                    </button>
+                    <div class="collapse" id="home-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="#" class="link-light rounded">Overview</a></li>
+                            <li><a href="#" class="link-light rounded">Updates</a></li>
+                            <li><a href="#" class="link-light rounded">Reports</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <!-- Spring -->
+                <li class="mb-1">
+                    <button class="btn btn-toggle link-light align-items-center rounded collapsed"
+                        data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+                        Spring
+                    </button>
+                    <div class="collapse" id="dashboard-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="./Anotaciones.html" class="link-light rounded">Anotaciones</a></li>
+                            <li><a href="#" class="link-light rounded">Weekly</a></li>
+                            <li><a href="#" class="link-light rounded">Monthly</a></li>
+                            <li><a href="#" class="link-light rounded">Annually</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <!-- Thymeleaf-->
+                <li class="mb-1">
+                    <button class="btn btn-toggle link-light align-items-center rounded collapsed"
+                        data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+                        Thymeleaf
+                    </button>
+                    <div class="collapse" id="orders-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="#" class="link-light rounded">New</a></li>
+                            <li><a href="#" class="link-light rounded">Processed</a></li>
+                            <li><a href="#" class="link-light rounded">Shipped</a></li>
+                            <li><a href="#" class="link-light rounded">Returned</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="border-top my-3"></li>
+                <li class="mb-1">
+                    <button class="btn btn-toggle link-light align-items-center rounded collapsed"
+                        data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+                        Account
+                    </button>
+                    <div class="collapse" id="account-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="#" class="link-light rounded">New...</a></li>
+                            <li><a href="#" class="link-light rounded">Profile</a></li>
+                            <li><a href="#" class="link-light rounded">Settings</a></li>
+                            <li><a href="#" class="link-light rounded">Sign out</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!--    -->
+        <div class="col container">
+            <div class="text-center">
+                <h1 id="titulo-capitulo">IoC y DI</h1>
+                <!-- .titulo-capitulo-->
+                <h4 id="desc-capitulo">Inversion de Control e Inyección de Dependencias (DI)</h4>
+                <!-- .desc-capitulo -->
+                <hr>
+            </div>
+            <!-- Indice-->
+            <div class="">
+                <ul>
+                    <h5>Inversion de control:</h5>
+                    <li>Conceptos</li>
+                    <p>Tipos de IoC incluída la inyección de dependencias y la busqueda de dependencias.<br> Diferencias
+                        entre varias aproximaciones de IoC. Pros y Contras.
+                    </p>
+                    <li>En Spring</li>
+                    <p>Implementación y alcances de IoC en Spring.
+                        <br> Setter. Constructor. Inyección por Método (Method Injection)
+                    </p>
+                    <h5>Inyección de Dependencias en Spring</h5>
+                    <p>Implementación de IoC Contenedor.
+                        <br> <code>BeanFactory</code> es la interfaz principal con la que las aplicaciones interactuan.
+                        La
+                        interfaz de <code>ApplicationContext</code>, es una extensión de <code>BeanFactory</code>.<br>
+                        Diferencia entre <code>BeanFactory</code> y
+                        <code>ApplicationContext</code>
+                    </p>
+                    <h5>Configuración del application context en Spring</h5>
+                    <p>Uso de XML y anotaciones para <code>ApplicationContext</code>
+                        <br>Groovy y configuraciones Java
+                        <br> Configuración DI y servicios adicionales de <code>BeanFactory</code>, como inheritancia de
+                        beans, administración de ciclos de vida y autowiring.<br>
+                    </p>
+                </ul>
+            </div>
+            <hr>
+            <!--  Parte 0  -->
+            <div>
+                <div class="text-center ">
+                    <h1 id="titulo-capitulo">¿Qué son las dependencias?</h1>
+                    <!-- .titulo-capitulo-->
+                    <h4 id="desc-capitulo">Qué es una dependencia y sus utilidades</h4>
+                    <!-- .desc-capitulo -->
+                </div>
+                <div>
+                    <p>
+                        Las dependencias llegaron a la programación orientada a objetos con el propósito de hacer una
+                        delegación mas clara de las responsabilidades de cada clase, componente, objeto o servicio.
+                        <br>
+                        Suponiendo que queremos calcular el promedio de una serie de notas y tenemos una clase que haga
+                        el
+                        cálculo por nosotros.
+                    <pre><code class="prettyprint">public class Calculos { 
+    private float contador,container,resultado;
+    public Calculos() {
+        this.contador = 0;
+        this.container = 0;
+        this.resultado = 0;
+    }
+    public void promedio(float... datos){
+        for (float dato : datos) {
+            this.container += dato;
+            this.contador +=1;
+        }
+        this.resultado = this.container/this.contador; 
+    }
+    public float getResultado() {
+        return resultado;
+    }
+}</code></pre>
+                    Lo único que tendríamos que hacer es llamar a nuestro main e invocar la funcion promedio de la clase
+                    calculos.
+                    <pre><code class="prettyprint">public class Main {
+    public static void main(String[] args) {
+        Calculos calculos = new Calculos();
+        calculos.promedio(3,3,9);
+    }
+}</code></pre>
+                    Si llevamos el ejemplo un poco mas allá y quisieramos implementar una nueva clase que almacene el
+                    nombre
+                    del estudiante.
+                    <br>Podemos crear una clase estudiante que permita almacenar el nombre y las notas del estudiante;
+                    que a
+                    su vez nos devuelva el promedio mediante un método de acceso con su correspondiente implementación:
+                    <pre><code class="prettyprint">public class Estudiante {
+    private Calculos calculo = new Calculos();
+    private float[] notas;
+
+    public float getPromedio() {
+        calculo.promedio(this.notas);
+        return calculo.getResultado();
+    }
+
+    public void setNotas(float... notas) {
+        this.notas = notas;
+    }  
+}</code></pre>
+                    Una vez creada la clase podemos invocarla desde nuestro <code>Main</code>:
+                    <pre><code class="prettyprint">public class Main {
+    public static void main(String[] args) {
+        Estudiante e = new Estudiante();
+        e.setNotas(9,9,8);
+        System.out.println(e.getPromedio());
+    }
+}</code></pre>
+                    Si prestamos atención, la clase <code>Estudiante</code> <b>depende</b> de que haya un componente
+                    inicializado de la clase <code>Calculos</code>.
+                    <br>
+                    De no ser así nuestra clase <code>Estudiante</code> no funcionaría de manera autónoma. Es decir que
+                    si o
+                    si debemos proveerle el componente del cual depende. En el caso del código de ejemplo se encuentra
+                    inicializado en las declaraciónes de variables. Pero esto puede variar como vamos a ver mas
+                    adelante.
+                    </p>
+                </div>
+            </div>
+            <hr>
+            <!-- PARTE 1-->
+            <div>
+                <div class="text-center">
+                    <h1 id="titulo-capitulo">IoC y DI</h1>
+                    <!-- .titulo-capitulo-->
+                    <h4 id="desc-capitulo">Tipos de IoC</h4>
+                    <!-- .desc-capitulo -->
+                    <hr>
+                </div>
+                <div class="">
+                    <p>
+                        El principal objetivo de IoC es ofrecer un mecanismo simple de provisionamiento de dependencias
+                        y
+                        manejo de dependencias a traves de los ciclos de vida de cada aplicación.
+                        <br>Los dos tipos principales se subdividen en implementaciones concretas del servicio de IoC.
+                        <br>IoC puede ser subdividido en:
+                    <ul>
+                        <li>
+                            <h5>Inyección de dependencias (Dependency Injection)</h5>
+                            <ul>
+                                <li>Inyección a traves del constructor</li>
+                                <li>Inyección a traves de un metodo de acceso (setDependencia(...))</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h5>Busqueda de dependencias</h5>
+                            <ul>
+                                <li>Arrastre de dependencias ( PULL )</li>
+                                <li>Busqueda contextualizada de dependencias (CDL - Contextualized Dependency Lookup)
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    </p>
+
+                    <p>La subdivisión de los dos tipos de implementación de IoC, se debe a que estos subtipos proveen
+                        distintos niveles de flexibilidad a la hora de hacer uso de alguno de ellos.
+                        <br>Algunos puntos a tener en cuenta son:
+                    <ul>
+                        <li>La <b>Busqueda de Dependencias</b> (Dependency Lookup) es una aproximación mas tradicional
+                            mientras que la <b>Inyección de Dependencias</b> (Dependency Injection) es más flexible y
+                            utilizable.</li>
+                        <li>Con <b>Dependency Lookup</b> un componente debe adquirir una referencia a una dependencia
+                            mientras que con DI las dependencias son inyectadas en el componente a traves de un
+                            contenedor
+                            IoC. </li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+            <!-- PARTE 2-->
+            <div id="dependencyPull">
+                <hr>
+                <div class="text-center">
+                    <h4>Dependency Pull (Arrastre de dependencias)</h4>
+                </div>
+                <p>Las dependencias son arrastradas de un registro previamente declarado. Spring hace uso de este
+                    mecanismo, devolviendo los componentes que el framework administra.
+                    <br>Pudimos ver un ejemplo de esto cuando cargamos nuestro <code>app-context.xml</code>.
+                <pre><code class="prettyprint">ApplicationContext ctx = new ClassPathXmlApplicationContext
+                        ("spring/app-context.xml");
+MessageRenderer mr = ctx.getBean("renderer", 
+                                        MessageRenderer.class);</code></pre>
+                </p>
+            </div>
+            <!-- PARTE 3-->
+            <div id="contextualizedDependencyLookup">
+                <div class="text-center">
+                    <hr>
+                    <h4>Busqueda de dependencias contextualizadas</h4>
+                    <h6>Contextualized dependency lookup (CDL)</h6>
+                </div>
+                <p>La busqueda es realizada a traves del contenedor que administra el recurso y no desde el registro
+                    central.
+                    <br>CDL trabaja por intermedio de una interfaz que implementa el componente. Por ejemplo:
+                </p>
+                <pre><code class="prettyprint">/**
+*   Implementando esta interfaz, el componente
+*   esta apuntando al contenedor del que quiere obtener
+*   su dependencia.
+*/
+public interface AdministradorComponente{
+    void realizarLookup(Contenedor contenedor);
+}
+/**
+*   La siguiente interfaz es el contenedor
+*   el cual provee un servicio de busqueda de
+*   dependencias
+*/
+public interface Contenedor {
+    Object getDependencia(String key);
+}
+/**
+*   Cuando el contenedor se enceuntra listo
+*   para pasar las  dependencias al componente,
+*   realiza el lookup(&lt;code&gt;realizarLookup()&lt;/code>)
+*   en cada componente.
+*   El componente puede hacer las busquedas 
+*   de sus dependencias utilizando 
+*   la interfaz Contenedor.
+*/
+public class ContextualizedDependencyLookup
+                implements AdministradorComponente {
+    private Dependencia dependencia;
+ @Override
+ public void realizarLookup(Contenedor contenedor) {
+    this.dependencia = (Dependencia) contenedor.getDependencia("miDep");
+ }
+ @Override
+ public String toString() {
+    return dependencia.toString();
+ }
+}</code></pre>
+            </div>
+            <!-- PARTE 4-->
+            <div id="constructorLookup">
+                <div class="text-center">
+                    <hr>
+                    <h4>Inyección de dependencias por constructor</h4>
+                    <h6>Constructor Dependency Injection</h6>
+                </div>
+                <div>
+                    <p>
+                        Esto ocurre cuando las dependencias de un componente son administradas mediante su constructor o
+                        constructores.
+                        <br>El componente declara uno o varios constructores, tomando como argumento sus dependencias, y
+                        el
+                        contenedor IoC pasa la dependencia al componente cuando se invoca una instancia del componente.
+                        <br> En este caso particular, el objeto-componente no puede ser creado sin sus dependencias. ya
+                        que
+                        son obligatorias al momento de llamar su constructor.
+                    </p>
+                    <pre><code class="prettyprint">public class InyeccionPorConstructor{
+    private Dependencia dependencia;
+    public InyeccionDependencia(Dependencia dependencia{
+        this.dependencia = dependencia;
+    }
+    public String toString(){
+        return dependencia.toString();
+    }</code></pre>
+                </div>
+            </div>
+            <!-- PARTE 5-->
+            <div id="setterDependency">
+                <div class="text-center">
+                    <hr>
+                    <h4>Inyección de dependencia a través de métodos de acceso.</h4>
+                    <h6>Setter Dependency Injection</h6>
+                </div>
+                <div>
+                    <p>El contenedor IoC inyecta las dependencias del componente vía métodos setters estilo JavaBean. Un
+                        método setter expone las dependencias que puede manejar el componente.</p>
+                    <pre class=""><code class=" prettyprint ">public class SetterInyeccion {
+    private Dependencia dependencia;
+    public void setDependencia(Dependencia dependencia) {
+        this.dependencia = dependencia;
+    }
+    @Override
+    public String toString() {
+        return dependencia.toString();
+    }
+}</code></pre>
+                    <p>Un objeto puede ser creado sin sus dependencias y pueden ser configuradas en otro momento
+                        llamando el
+                        método <code>setDependencia()</code>
+                        <br>La injección por método suele ser el mecanismo de inyección mas utilizado y el mas fácil de
+                        implementar
+                    </p>
+                </div>
+            </div>
+            <!-- PARTE 6-->
+            <div class="">
+                <div class="text-center ">
+                    <hr>
+                    <h4 id="titulo-capitulo">Injection vs. Lookup</h4>
+                    <!-- .titulo-capitulo-->
+                    <h6 id="desc-capitulo">Inyección de dependencias vs Busqueda de dependencias</h6>
+                    <!-- .desc-capitulo -->
+                </div>
+                <div>
+                    <p>
+                        En Spring, aparte de la busqueda inicial de beans, tus componentes y sus dependencias siempre
+                        son
+                        ruteadas utilizando el estilo de inyección IoC
+                        <br>
+                        Pero... ¿Qué método deberíamos utilizar? ¿Injection? ¿Lookup? La respuesta definitivamente recae
+                        sobre injection, ya que utilizando este tipo de IoC no tiene impacto en nuestro código del
+                        componente.
+                        <br>
+                        A diferencia del Dependency Pull (arrastre de dependencias), se debe proporcionar una referencia
+                        al
+                        registro e interactuar con el para obtener las dependencias. Y la utilización de CDL requiere
+                        que la
+                        clase del componente implemente una interfaz específica y una lookup manual para todas las
+                        dependencias.
+                        <br>
+                        Al utilizar inyección de dependencias, la mayoria de tus clases deben permitir que las
+                        dependencias
+                        sean inyectadas ya sea por intermedio de la utilización de constructores o métodos de acceso.
+                        <br>
+                        No tan solo eso, sino que también se vuelve más fácil a la hora de realizar pruebas de clases
+                        aisladas del contenedor.
+                        <br>
+                        Las soluciones que sean basadas en Lookup son por necesidad mas complejas. Pero se convierte
+                        cuestionable a la hora de validar la adición de complejidad innecesaria a un proceso central de
+                        la
+                        aplicacion como un administrador de dependencias.
+                        <br>
+                        Si tomamos en cuenta el ejemplo del tipo CDL, hay algunas cosas que pueden salir mal, la
+                        dependencia
+                        que buscamos puede cambiar, la instancia del contenedor puede ser null, o la dependencia que nos
+                        retorne puede no ser la que buscamos.
+                    <pre><code class="prettyprint">public void performLookup(Container container) {
+    this.dependency = (Dependency) container.getDependency("myDependency");
+}</code></pre>
+                    En pocas palabras y en resumen: <br>
+                    La inyección de dependencias vino a nuestras vidas para hacer todo mas fácil.
+                    <br>
+                    <ul>
+                        <li>Menos código y mas simple </li>
+                        <li>Algunas veces se puede automatizar la inserción de código con un buen IDE</li>
+                        <li>Las dependencias y objetos se ven almacenados en una variable.</li>
+                    </ul>
+
+                    </p>
+                </div>
+            </div>
+            <!-- Setter injection vs Constructor Injection-->
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?"></script>
+    <!--_june-->
+</body>
+
+<style>
+
+</style>
+
+</html>

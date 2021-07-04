@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <meta http-equiv="refresh" content="2">-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href="../style/css.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="row">
+        <!--  SideBar  -->
+        <div class=" col-3 flex-shrink-0 p-3 bg-dark">
+            <a href="/Spring/docs/index.html"
+                class="d-flex align-items-center pb-3 mb-3 link-light text-decoration-none border-bottom">
+                <svg class="" width="30" height="24" style="background-color: white;">
+                </svg>
+                <span class="fs-5 fw-semibold">Spring</span>
+            </a>
+            <ul class="list-unstyled ps-0">
+                <!-- Java -->
+                <li class="mb-1">
+                    <button class="btn btn-toggle link-light align-items-center rounded collapsed"
+                        data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+                        Java
+                    </button>
+                    <div class="collapse" id="home-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="#" class="link-light rounded">Overview</a></li>
+                            <li><a href="#" class="link-light rounded">Updates</a></li>
+                            <li><a href="#" class="link-light rounded">Reports</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <!-- Spring -->
+                <li class="mb-1">
+                    <button class="btn btn-toggle link-light align-items-center rounded collapsed"
+                        data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+                        Spring
+                    </button>
+                    <div class="collapse" id="dashboard-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="./Anotaciones.html" class="link-light rounded">Anotaciones</a></li>
+                            <li><a href="#" class="link-light rounded">Weekly</a></li>
+                            <li><a href="#" class="link-light rounded">Monthly</a></li>
+                            <li><a href="#" class="link-light rounded">Annually</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <!-- Thymeleaf-->
+                <li class="mb-1">
+                    <button class="btn btn-toggle link-light align-items-center rounded collapsed"
+                        data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
+                        Thymeleaf
+                    </button>
+                    <div class="collapse" id="orders-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="#" class="link-light rounded">New</a></li>
+                            <li><a href="#" class="link-light rounded">Processed</a></li>
+                            <li><a href="#" class="link-light rounded">Shipped</a></li>
+                            <li><a href="#" class="link-light rounded">Returned</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="border-top my-3"></li>
+                <li class="mb-1">
+                    <button class="btn btn-toggle link-light align-items-center rounded collapsed"
+                        data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+                        Account
+                    </button>
+                    <div class="collapse" id="account-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="#" class="link-light rounded">New...</a></li>
+                            <li><a href="#" class="link-light rounded">Profile</a></li>
+                            <li><a href="#" class="link-light rounded">Settings</a></li>
+                            <li><a href="#" class="link-light rounded">Sign out</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!--  Contenido  -->
+        <div class="col">
+            <div class="text-center">
+                <h1 id="titulo-capitulo">@Anotaciones!</h1>
+                <!-- .titulo-capitulo-->
+                <h4 id="desc-capitulo"></h4>
+                <!-- .desc-capitulo -->
+                <hr>
+            </div>
+            <!-- -->
+            <p>Las anotaciones son principalmente utilizadas para reemplazar los arhivos de configuración XML y
+                pueden cambiar el comportamiento del Framework drásticamente.
+                <br> Vamos a ver como implementar nuestros primeros Beans y una configuración inicialsimple.
+                <br> En primer lugar debemos crear una clase e importar:
+            </p>
+            <pre><code class="prettyprint">import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;</code></pre>
+            <p>Esto permitirá que podamos empezar a usar las anotaciones <code>@Configuration</code> y
+                <code>@Bean</code><br>
+                <br>Las clases de <code>@Configuration</code> son clases que contienen definiciones bean
+                (métodos
+                anotados con <code>@Bean</code>) o son auto-configuradas para identificar definiciones bean en
+                la
+                aplicación; anotándolas con <code>@ComponentScanning</code>.
+            </p>
+            <p class="card-subtitle"> Ahora si ya podemos empezar a crear la clase equivalente al
+                app-context.xml:
+            </p>
+            <pre><code class="prettyprint">@Configuration
+public class ConfiguracionAnotaciones {
+    // equivalente a &lt;bean id="proveedor" class=".."/&gt;
+    @Bean
+    public MsgProveedor provider() {
+        return new MsgProveedorImpl();
+    }
+
+    // equivalente a &lt;bean id="renderizador" class=".."/&gt;
+    @Bean
+    public MsgRender renderer() {
+        MsgRender renderizador = new MsgRenderImpl();
+        renderizador.setMsgProveedor(provider());
+        return renderizador;
+    }
+}</code></pre>
+            <p>
+                Finalmente, el método <code>main()</code> debe utilizar la implementación de
+                <code>ApplicationContext</code> que determina como serán interpretadas las definiciones
+                <code>@Bean</code> de las clases de <code>@Configuration</code>
+                <br> Esta clase es AnnotationConfigApplicationContext (si asi se llama).
+            </p>
+            <pre><code class="prettyprint">public static void main(String[] args) {
+    ApplicationContext ctx = new AnnotationConfigApplicationContext
+                                (ConfiguracionAnotaciones.class);
+    MsgRender mr = ctx.getBean("renderer",MsgRender.class);
+    mr.render();
+}
+</code></pre>
+            <a
+                href="https://mvitinnovaciontecnologica.wordpress.com/2020/02/06/guia-de-anotaciones-de-spring-framework/">Mas
+                Anotaciones Bean</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?"></script>
+
+</body>
+
+<style>
+
+</style>
+
+</html>
